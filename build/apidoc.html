@@ -1,0 +1,154 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://github.com/wearefractal/deprecated"
+
+    >deprecated (v0.0.1)</a>
+</h1>
+<h4>Tool for deprecating things</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.deprecated">module deprecated</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.deprecated.field">
+            function <span class="apidocSignatureSpan">deprecated.</span>field
+            <span class="apidocSignatureSpan">(msg, log, parent, field, val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.deprecated.method">
+            function <span class="apidocSignatureSpan">deprecated.</span>method
+            <span class="apidocSignatureSpan">(msg, log, fn)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.deprecated" id="apidoc.module.deprecated">module deprecated</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.deprecated.field" id="apidoc.element.deprecated.field">
+        function <span class="apidocSignatureSpan">deprecated.</span>field
+        <span class="apidocSignatureSpan">(msg, log, parent, field, val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">field = function (msg, log, parent, field, val) {
+  var called = false;
+  var getter = function(){
+    if (!called) {
+      called = true;
+      log(msg);
+    }
+    return val;
+  };
+  var setter = function(v) {
+    if (!called) {
+      called = true;
+      log(msg);
+    }
+    val = v;
+    return v;
+  };
+  Object.defineProperty(parent, field, {
+    get: getter,
+    set: setter,
+    enumerable: true
+  });
+  return;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.deprecated.method" id="apidoc.element.deprecated.method">
+        function <span class="apidocSignatureSpan">deprecated.</span>method
+        <span class="apidocSignatureSpan">(msg, log, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">method = function (msg, log, fn) {
+  var called = false;
+  return function(){
+    if (!called) {
+      called = true;
+      log(msg);
+    }
+    return fn.apply(this, arguments);
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
